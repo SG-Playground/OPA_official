@@ -1,0 +1,213 @@
+@import 'mixin';
+
+$cWhite: white;
+$cBlack: black;
+$cRed: red;
+$bg-Color: rgb(170, 175, 190);
+
+body {
+    background-color: $bg-Color;
+}
+
+div {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.dot {
+    color: $cRed;
+}
+
+.icon-container {
+    border-bottom: 3px solid rgba($color: gray, $alpha: .3);
+
+    & .band-name {
+        font-size: 100px;
+        font-family: 'Josefin Sans', sans-serif;
+        color: $cWhite;
+        top: 50%;
+        left: 5%;
+        margin-bottom: 20px;
+    }
+}
+
+.menu {
+    text-align: right;
+    letter-spacing: 50px;
+    
+    & li {
+        list-style: none;
+        display: inline-block;
+        font-size: 20px;
+
+        & > button {
+            border: none;
+            background-color: $bg-Color;
+            transition: .5s;
+            font-size: 20px;
+            font-family: 'Josefin Sans', sans-serif;
+            outline: none;
+            cursor: pointer;
+
+            &:hover {
+                color: $cRed;
+            }
+        }
+    }
+}
+
+.biography {
+    height: 550px;
+
+    & h1 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 50px;
+        text-align: center;
+
+        & .white {
+            color: $cWhite;
+        }
+    }
+
+    & p {
+        font-size: 21px;
+        font-weight: bold;
+        letter-spacing: 5px;  
+    }
+}
+
+.member {
+    text-align: center;
+
+    & h1 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 50px;
+        text-align: center;
+
+        & .white {
+            color: $cWhite;
+        }
+    }
+}
+
+.gallery {
+    text-align: center;
+    height: 450px;
+
+    & h1 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 50px;
+        text-align: center;
+
+        & .white {
+            color: $cWhite;
+        }
+    }
+}
+
+.comingsoon {
+    & h1 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 60px;
+        text-align: center;
+        margin-top: 80px;
+    }
+}
+
+.live {
+    text-align: center;
+    margin-bottom: 100px;
+
+    & h2 {
+        color: $cRed;
+    }
+
+    & p {
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+.comingsoon {
+    position: relative;
+    height: 100vh;
+}
+
+.animation-text {
+    position: absolute;
+    top: 10%;
+    left: 36%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    
+    &.active {
+        & .char {
+            display: inline-block;
+
+            @include animation(
+                $name: kf-animation-comingsoon,
+                $duration: 5s,
+                $iteration-cont: infinite,
+                $fill-mode: forwards,
+            );
+
+            @for $i from 1 to 15 {
+                &:nth-child(#{$i}) {
+                    animation-delay: $i * 0.1s;
+                }
+            }
+        }
+    }
+}
+
+@keyframes kf-animation-comingsoon {
+    0% {
+        opacity: 1;
+        transform: translateY(-70%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.member-icon {
+    display: flex;
+
+    & .icon {
+        position: relative;
+        flex: auto;
+        margin: 5px 5px 100px 5px;
+        
+        & img {
+            width: 100%;
+        }
+
+        & p {
+            position: absolute;
+            top: 35%;
+            left: 12%;
+            opacity: 0;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 25px;
+            transition: all .6s ease;
+        }
+
+        &:hover p {
+            opacity: 1;
+            padding-top: 80px;
+        }
+
+        &:hover img {
+            opacity: .5;
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    color: #000080;
+    font-weight: bold;
+}
